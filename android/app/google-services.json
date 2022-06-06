@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173619817208",
+    "project_id": "jobtim",
+    "storage_bucket": "jobtim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173619817208:android:61a3c7340abaf63113a90d",
+        "android_client_info": {
+          "package_name": "com.habybit.job_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173619817208-8mcf60et2nkqvcr8efbhs7t43c9la417.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZPQZHG8hNvlUpmjOX4cr2krTrgWOJb20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173619817208-8mcf60et2nkqvcr8efbhs7t43c9la417.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
