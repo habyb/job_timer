@@ -10,7 +10,7 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
     ChildRoute('/', child: (context, args) => const SplashPage()),
-    ModuleRoute('login', module: LoginModule()),
+    ModuleRoute('/login', module: LoginModule()),
     ModuleRoute('/home', module: HomeModule()),
   ];
 }
