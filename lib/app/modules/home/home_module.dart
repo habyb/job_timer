@@ -1,6 +1,3 @@
-
-import 'dart:js';
-
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:job_timer/app/modules/home/home_page.dart';
 
