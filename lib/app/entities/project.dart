@@ -1,4 +1,3 @@
-
 import 'package:isar/isar.dart';
 import 'package:job_timer/app/entities/converters/project_status_converter.dart';
 import 'package:job_timer/app/entities/project_status.dart';
@@ -12,7 +11,8 @@ class Project {
   int? id;
 
   late String name;
-  
+  late int estimate;
+
   @ProjectStatusConverter()
   late ProjectStatus status;
 
