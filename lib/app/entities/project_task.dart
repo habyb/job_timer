@@ -7,6 +7,6 @@ class ProjectTask {
   @Id()
   int? id;
   late String name;
-  late int durarion;
+  late int duration;
   late DateTime created = DateTime.now();
 }

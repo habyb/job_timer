@@ -15,9 +15,9 @@ extension GetProjectTaskCollection on Isar {
 const ProjectTaskSchema = CollectionSchema(
   name: 'ProjectTask',
   schema:
-      '{"name":"ProjectTask","idName":"id","properties":[{"name":"created","type":"Long"},{"name":"durarion","type":"Long"},{"name":"name","type":"String"}],"indexes":[],"links":[]}',
+      '{"name":"ProjectTask","idName":"id","properties":[{"name":"created","type":"Long"},{"name":"duration","type":"Long"},{"name":"name","type":"String"}],"indexes":[],"links":[]}',
   idName: 'id',
-  propertyIds: {'created': 0, 'durarion': 1, 'name': 2},
+  propertyIds: {'created': 0, 'duration': 1, 'name': 2},
   listProperties: {},
   indexIds: {},
   indexValueTypes: {},
@@ -62,8 +62,8 @@ void _projectTaskSerializeNative(
   var dynamicSize = 0;
   final value0 = object.created;
   final _created = value0;
-  final value1 = object.durarion;
-  final _durarion = value1;
+  final value1 = object.duration;
+  final _duration = value1;
   final value2 = object.name;
   final _name = IsarBinaryWriter.utf8Encoder.convert(value2);
   dynamicSize += (_name.length) as int;
@@ -74,7 +74,7 @@ void _projectTaskSerializeNative(
   final buffer = IsarNative.bufAsBytes(rawObj.buffer, size);
   final writer = IsarBinaryWriter(buffer, staticSize);
   writer.writeDateTime(offsets[0], _created);
-  writer.writeLong(offsets[1], _durarion);
+  writer.writeLong(offsets[1], _duration);
   writer.writeBytes(offsets[2], _name);
 }
 
@@ -85,7 +85,7 @@ ProjectTask _projectTaskDeserializeNative(
     List<int> offsets) {
   final object = ProjectTask();
   object.created = reader.readDateTime(offsets[0]);
-  object.durarion = reader.readLong(offsets[1]);
+  object.duration = reader.readLong(offsets[1]);
   object.id = id;
   object.name = reader.readString(offsets[2]);
   return object;
@@ -112,7 +112,7 @@ dynamic _projectTaskSerializeWeb(
   final jsObj = IsarNative.newJsObject();
   IsarNative.jsObjectSet(
       jsObj, 'created', object.created.toUtc().millisecondsSinceEpoch);
-  IsarNative.jsObjectSet(jsObj, 'durarion', object.durarion);
+  IsarNative.jsObjectSet(jsObj, 'duration', object.duration);
   IsarNative.jsObjectSet(jsObj, 'id', object.id);
   IsarNative.jsObjectSet(jsObj, 'name', object.name);
   return jsObj;
@@ -127,8 +127,8 @@ ProjectTask _projectTaskDeserializeWeb(
               isUtc: true)
           .toLocal()
       : DateTime.fromMillisecondsSinceEpoch(0);
-  object.durarion =
-      IsarNative.jsObjectGet(jsObj, 'durarion') ?? double.negativeInfinity;
+  object.duration =
+      IsarNative.jsObjectGet(jsObj, 'duration') ?? double.negativeInfinity;
   object.id = IsarNative.jsObjectGet(jsObj, 'id');
   object.name = IsarNative.jsObjectGet(jsObj, 'name') ?? '';
   return object;
@@ -143,8 +143,8 @@ P _projectTaskDeserializePropWeb<P>(Object jsObj, String propertyName) {
                   isUtc: true)
               .toLocal()
           : DateTime.fromMillisecondsSinceEpoch(0)) as P;
-    case 'durarion':
-      return (IsarNative.jsObjectGet(jsObj, 'durarion') ??
+    case 'duration':
+      return (IsarNative.jsObjectGet(jsObj, 'duration') ??
           double.negativeInfinity) as P;
     case 'id':
       return (IsarNative.jsObjectGet(jsObj, 'id')) as P;
@@ -273,49 +273,49 @@ extension ProjectTaskQueryFilter
     ));
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QAfterFilterCondition> durarionEqualTo(
+  QueryBuilder<ProjectTask, ProjectTask, QAfterFilterCondition> durationEqualTo(
       int value) {
     return addFilterConditionInternal(FilterCondition(
       type: ConditionType.eq,
-      property: 'durarion',
+      property: 'duration',
       value: value,
     ));
   }
 
   QueryBuilder<ProjectTask, ProjectTask, QAfterFilterCondition>
-      durarionGreaterThan(
+      durationGreaterThan(
     int value, {
     bool include = false,
   }) {
     return addFilterConditionInternal(FilterCondition(
       type: ConditionType.gt,
       include: include,
-      property: 'durarion',
+      property: 'duration',
       value: value,
     ));
   }
 
   QueryBuilder<ProjectTask, ProjectTask, QAfterFilterCondition>
-      durarionLessThan(
+      durationLessThan(
     int value, {
     bool include = false,
   }) {
     return addFilterConditionInternal(FilterCondition(
       type: ConditionType.lt,
       include: include,
-      property: 'durarion',
+      property: 'duration',
       value: value,
     ));
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QAfterFilterCondition> durarionBetween(
+  QueryBuilder<ProjectTask, ProjectTask, QAfterFilterCondition> durationBetween(
     int lower,
     int upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return addFilterConditionInternal(FilterCondition.between(
-      property: 'durarion',
+      property: 'duration',
       lower: lower,
       includeLower: includeLower,
       upper: upper,
@@ -496,12 +496,12 @@ extension ProjectTaskQueryWhereSortBy
     return addSortByInternal('created', Sort.desc);
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> sortByDurarion() {
-    return addSortByInternal('durarion', Sort.asc);
+  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> sortByDuration() {
+    return addSortByInternal('duration', Sort.asc);
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> sortByDurarionDesc() {
-    return addSortByInternal('durarion', Sort.desc);
+  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> sortByDurationDesc() {
+    return addSortByInternal('duration', Sort.desc);
   }
 
   QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> sortById() {
@@ -531,12 +531,12 @@ extension ProjectTaskQueryWhereSortThenBy
     return addSortByInternal('created', Sort.desc);
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> thenByDurarion() {
-    return addSortByInternal('durarion', Sort.asc);
+  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> thenByDuration() {
+    return addSortByInternal('duration', Sort.asc);
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> thenByDurarionDesc() {
-    return addSortByInternal('durarion', Sort.desc);
+  QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> thenByDurationDesc() {
+    return addSortByInternal('duration', Sort.desc);
   }
 
   QueryBuilder<ProjectTask, ProjectTask, QAfterSortBy> thenById() {
@@ -562,8 +562,8 @@ extension ProjectTaskQueryWhereDistinct
     return addDistinctByInternal('created');
   }
 
-  QueryBuilder<ProjectTask, ProjectTask, QDistinct> distinctByDurarion() {
-    return addDistinctByInternal('durarion');
+  QueryBuilder<ProjectTask, ProjectTask, QDistinct> distinctByDuration() {
+    return addDistinctByInternal('duration');
   }
 
   QueryBuilder<ProjectTask, ProjectTask, QDistinct> distinctById() {
@@ -582,8 +582,8 @@ extension ProjectTaskQueryProperty
     return addPropertyNameInternal('created');
   }
 
-  QueryBuilder<ProjectTask, int, QQueryOperations> durarionProperty() {
-    return addPropertyNameInternal('durarion');
+  QueryBuilder<ProjectTask, int, QQueryOperations> durationProperty() {
+    return addPropertyNameInternal('duration');
   }
 
   QueryBuilder<ProjectTask, int?, QQueryOperations> idProperty() {
