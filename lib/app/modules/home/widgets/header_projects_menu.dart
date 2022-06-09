@@ -1,11 +1,19 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/modules/home/controller/home_controller.dart';
 
 class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
+  final HomeController controller;
+
+  HeaderProjectsMenu({
+    required this.controller,
+  });
+
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -18,31 +26,31 @@ class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
               SizedBox(
                 width: constraints.maxWidth * .5,
                 child: DropdownButtonFormField<ProjectStatus>(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      contentPadding: const EdgeInsets.all(10),
+                      isCollapsed: true,
                     ),
-                    contentPadding: const EdgeInsets.all(10),
-                    isCollapsed: true,
-                  ),
-                  items: ProjectStatus.values
-                  .map(
-                    (e) => DropdownMenuItem(
-                      value: e,
-                      child: Text(e.label),
-                  ),
-                  )
-                  .toList(), 
-                  onChanged: (value){}
-                ),
+                    items: ProjectStatus.values
+                        .map(
+                          (e) => DropdownMenuItem(
+                            value: e,
+                            child: Text(e.label),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {}),
               ),
               SizedBox(
                 width: constraints.maxWidth * .4,
                 child: ElevatedButton.icon(
-                  onPressed: (){
-                    Modular.to.pushNamed('/project/register');
-                  }, 
-                  icon: const Icon(Icons.add), 
+                  onPressed: () async {
+                    await Modular.to.pushNamed('/project/register');
+                    controller.loadProjects();
+                  },
+                  icon: const Icon(Icons.add),
                   label: const Text('Novo Projeto'),
                 ),
               ),
@@ -63,5 +71,4 @@ class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return true;
   }
-  
 }
