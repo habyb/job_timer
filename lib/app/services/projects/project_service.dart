@@ -1,4 +1,3 @@
-import 'package:job_timer/app/entities/project.dart';
 import 'package:job_timer/app/entities/project_status.dart';
 import 'package:job_timer/app/view_models/project_model.dart';
 import 'package:job_timer/app/view_models/project_task_model.dart';
