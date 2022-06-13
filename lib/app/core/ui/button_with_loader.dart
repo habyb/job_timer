@@ -24,22 +24,20 @@ class ButtonWithLoader<B extends StateStreamable<S>, S>
       builder: (context, showLoading) {
         return ElevatedButton(
           onPressed: showLoading ? null : onPressed,
+          style: !showLoading
+              ? ElevatedButton.styleFrom()
+              : ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  onSurface: Colors.blue,
+                ),
           child: Visibility(
-            visible: showLoading,
-            replacement: Text(label),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Text(label),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: CircularProgressIndicator.adaptive(
-                    backgroundColor: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          ),
+              visible: showLoading,
+              replacement: Text(label),
+              child: Center(
+                child: CircularProgressIndicator.adaptive(
+                  backgroundColor: Colors.white,
+                ),
+              )),
         );
       },
     );
