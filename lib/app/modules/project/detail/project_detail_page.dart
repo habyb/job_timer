@@ -62,26 +62,30 @@ class ProjectDetailPage extends StatelessWidget {
         ProjectDetailAppbar(
           projectModel: projectModel,
         ),
-        SliverList(
-          delegate: SliverChildListDelegate([
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 50.0,
-                bottom: 50,
-              ),
-              child: ProjectPieChart(
-                projectEstimate: projectModel.estimate,
-                totalTask: totalTask,
-              ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50.0, bottom: 50),
+            child: ProjectPieChart(
+              projectEstimate: projectModel.estimate,
+              totalTask: totalTask,
             ),
-            ...projectModel.tasks
-                .map(
-                  (task) => ProjectTaskTile(
-                    task: task,
-                  ),
-                )
-                .toList(),
-          ]),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            childCount: projectModel.tasks.length,
+            (context, index) =>
+                ProjectTaskTile(task: projectModel.tasks[index]),
+          ),
+          // delegate: SliverChildListDelegate([
+          //   ...projectModel.tasks
+          //       .map(
+          //         (task) => ProjectTaskTile(
+          //           task: task,
+          //         ),
+          //       )
+          //       .toList(),
+          // ]),
         ),
         SliverFillRemaining(
           hasScrollBody: false,
