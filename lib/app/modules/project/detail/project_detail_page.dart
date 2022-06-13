@@ -77,15 +77,6 @@ class ProjectDetailPage extends StatelessWidget {
             (context, index) =>
                 ProjectTaskTile(task: projectModel.tasks[index]),
           ),
-          // delegate: SliverChildListDelegate([
-          //   ...projectModel.tasks
-          //       .map(
-          //         (task) => ProjectTaskTile(
-          //           task: task,
-          //         ),
-          //       )
-          //       .toList(),
-          // ]),
         ),
         SliverFillRemaining(
           hasScrollBody: false,
